@@ -40,6 +40,10 @@ body {
   border-color: rgba(30, 30, 31, 0.541);
 }
 
+.card-body {
+  background-color: #fff;
+}
+
 .card-header {
   border-color: rgba(30, 30, 31, 0.541);
 }
