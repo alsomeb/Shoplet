@@ -5,12 +5,16 @@ body {
   padding: 10% 10%; /* 10% top and bot, 10% left and right */
 }
 
+.index-header h1 {
+  color: #e86933;
+}
+
 .jumbotron {
-  background-color: rgba(127, 204, 255, 0.322);
+  background-color: #e8693346;
 }
 
 .cart-icon {
-  color: #3a98b9;
+  color: #b8621bcb;
 }
 
 .center {
@@ -24,6 +28,19 @@ body {
   width: 100%;
 }
 
+.jumbo-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-flow: row wrap;
+}
+
+.jumbo-head img {
+  width: auto;
+  height: 90px;
+}
+
 .listan li {
   font-size: 1.5rem;
   list-style: none;
@@ -32,12 +49,12 @@ body {
 
 .listan i {
   font-size: 1.5rem;
-  color: #38941f;
+  color: #b8621b;
 }
 
 .card {
-  background-color: rgba(127, 204, 255, 0.322);
-  border-color: rgba(30, 30, 31, 0.541);
+  background-color: #e8693346;
+  border-color: rgba(0, 0, 0, 0.692);
 }
 
 .card-body {
@@ -45,11 +62,11 @@ body {
 }
 
 .card-header {
-  border-color: rgba(30, 30, 31, 0.541);
+  border-color: rgba(30, 30, 31, 0.692);
 }
 
 .card-footer {
-  border-color: rgba(30, 30, 31, 0.541);
+  border-color: rgba(30, 30, 31, 0.692);
 }
 
 /* Media Queries */
@@ -61,5 +78,10 @@ body {
 
   .card {
     margin: 8% 10%;
+  }
+
+  .jumbo-head img {
+    width: auto;
+    height: 50px;
   }
 }
