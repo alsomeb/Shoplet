@@ -3,6 +3,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   padding: 10% 10%; /* 10% top and bot, 10% left and right */
+  user-select: none; /* So we cant select stuff on website */
 }
 
 .index-header h1 {
