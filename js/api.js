@@ -10,3 +10,6 @@ export async function getAllShoppingLists() {
     console.log(err);
   }
 }
+
+// FOR POST
+// https://dmitripavlutin.com/fetch-with-json/
