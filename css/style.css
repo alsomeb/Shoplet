@@ -11,6 +11,7 @@ body {
 }
 
 .jumbotron {
+  margin: 2%;
   background-color: #e8693346;
 }
 
@@ -43,14 +44,19 @@ body {
 }
 
 .listan li {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   list-style: none;
   margin: 5% 10%;
 }
 
 .listan i {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #b8621b;
+}
+
+.jumbo-title {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .card {
@@ -72,13 +78,13 @@ body {
 
 /* Media Queries */
 /* On screens that are 770px or less */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 990px) {
   body {
     margin-top: 20%;
   }
 
   .card {
-    margin: 8% 10%;
+    margin: 8% 5%;
   }
 
   .jumbo-head img {
