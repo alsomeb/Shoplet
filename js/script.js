@@ -1,3 +1,4 @@
 'use strict';
+import { logger } from './api.js';
 
-console.log('JS Activated');
+logger('testing');
