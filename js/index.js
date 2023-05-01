@@ -14,6 +14,7 @@ const handleRenderCards = () => {
     if (data !== undefined) {
       if (data.length > 0) {
         data.forEach((list) => {
+          // TODO add Desc like we added list.added!!
           shoppingListsElement.append(`
                   <div class="shoppinglist-column col-lg-4 col-md-6">
                   <div class="card shadow">
