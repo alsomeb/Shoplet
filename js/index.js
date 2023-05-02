@@ -9,26 +9,38 @@ const shoppingListsElement = $('#shopping_lists');
 
 const indexHeaderElement = $('.index-header-text');
 
+const listeners = () => {
+  $(document).ready(function () {
+    $('.shopping').click(function () {
+      let listId = $(this).prop('id');
+      localStorage.setItem('listId', JSON.stringify(listId));
+    });
+
+    $('.delete').on('click', function () {
+      alert('Delete');
+    });
+  });
+};
+
 const handleRenderCards = () => {
   getAllShoppingLists().then((data) => {
     if (data !== undefined) {
       if (data.length > 0) {
         data.forEach((list) => {
-          // TODO add Desc like we added list.added!!
           shoppingListsElement.append(`
                   <div class="shoppinglist-column col-lg-4 col-md-6">
                   <div class="card shadow">
                     <div class="card-header fw-bold text-center">${list.added}</div>
                     <div class="card-body text-center">
-                      <p class="lead mt-2">Shopping list for dinner with family</p>
+                      <p class="lead mt-2">${list.description}</p>
                     </div>
                     <div class="card-footer">
                       <div class="update-buttons">
                         <div class="box">
-                          <a class="btn btn-outline-dark" href="/list.html"
+                          <a id="${list.id}" class="btn btn-outline-dark shopping" href="/list.html"
                             >Start shopping</a
                           >
-                          <a class="btn btn-outline-danger" href="#">Delete</a>
+                          <a class="btn btn-outline-danger delete" href="#">Delete</a>
                         </div>
                       </div>
                     </div>
@@ -36,6 +48,7 @@ const handleRenderCards = () => {
                 </div>
                   `);
         });
+        listeners();
       } else {
         // If There are no shopping lists created yet
         indexHeaderElement.text('No Shoppinglists yet, create one!');
@@ -56,7 +69,7 @@ const handleRenderCards = () => {
       shoppingListsElement.append(`
       <div class="img-fluid">
         <img src="img/error.png" alt="error-icon" />
-      </div>;
+      </div>
       `);
     }
   });
