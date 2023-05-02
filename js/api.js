@@ -24,5 +24,10 @@ export async function getProductsByShoppingListId(listId) {
   }
 }
 
+export function getCurrentSavedShoppingListId() {
+  const currentId = JSON.parse(localStorage.getItem('listId'));
+  return currentId;
+}
+
 // FOR POST
 // https://dmitripavlutin.com/fetch-with-json/

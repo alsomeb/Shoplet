@@ -2,8 +2,7 @@
 import { getAllShoppingLists } from './api.js';
 
 // https://mehdiouss.medium.com/how-to-use-async-await-with-the-fetch-api-in-javascript-97cdcca7abbc
-// Since getAllShoppingLists() is an asynchronous function,
-// it returns a promise. As a result, we used one 'then()' method to handle the promise.
+// Since getAllShoppingLists() is an asynchronous function, it returns a promise. As a result, we used one 'then()' method to handle the promise.
 
 const shoppingListsElement = $('#shopping_lists');
 
@@ -17,7 +16,7 @@ const listeners = () => {
     });
 
     $('.delete').on('click', function () {
-      alert('Delete');
+      alert('Delete'); // Todo
     });
   });
 };
