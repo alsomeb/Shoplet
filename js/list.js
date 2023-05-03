@@ -2,6 +2,7 @@
 import {
   getProductsByShoppingListId,
   getCurrentSavedShoppingListId,
+  getShoppingListById,
 } from './api.js';
 
 const currentId = getCurrentSavedShoppingListId();
@@ -10,22 +11,18 @@ const unorderedListItemElement = $('.shopping-list');
 
 const productsHeaderElement = $('.products-header');
 
-const listanElement = $('.listan');
+const buttonsDivElement = $('.buttons');
 
 const jumbotronElement = $('.jumbotron');
 
 const jumboTitleElement = $('.jumbo-title');
 
-const listenerIfProducts = () => {
+const listeners = () => {
   $(document).ready(function () {
     $('.check-btn').on('click', function () {
       alert('Marks done'); // Todo
     });
-  });
-};
 
-const listenerIfNoProducts = () => {
-  $(document).ready(function () {
     $('.add-product').on('click', function () {
       alert('Add goes here'); // Todo
     });
@@ -45,18 +42,10 @@ const handleRenderProductsInShoppingList = (currentId) => {
             </button>
           </li>`);
         });
-        handleGetShoppingListDate(currentId);
-        listenerIfProducts();
+        handleRenderShoppingListInfo(currentId);
       } else {
         // If There are no products in this list created yet
-        handleGetShoppingListDate(currentId);
-        productsHeaderElement.text('Add some products!');
-        listanElement.append(`
-        <div class="listan">
-          <button class="btn btn-outline-dark mb-5 add-product">Add Product</button>
-        </div>
-        `);
-        listenerIfNoProducts();
+        handleRenderShoppingListInfo(currentId);
       }
     } else {
       // If Error with API fetching
@@ -64,16 +53,34 @@ const handleRenderProductsInShoppingList = (currentId) => {
       jumbotronElement.append(`
       <div class="img-fluid">
         <img class="mb-5" src="img/error.png" alt="error-icon" />
-      </div>
-      <a href ="/index.html" class="btn btn-outline-danger mb-5">Go back</a>
-      `);
+      </div>`);
     }
   });
 };
 
-const handleGetShoppingListDate = (currentId) => {
-  // todo use currentId from shopping list and fetch date
-  jumboTitleElement.text('Datum todo');
+const handleRenderShoppingListInfo = (currentId) => {
+  getShoppingListById(currentId).then((data) => {
+    jumboTitleElement.text(data.added);
+    productsHeaderElement.text(data.description);
+    buttonsDivElement.append(`
+    <button class="btn btn-outline-dark add-product">Add Product</button>`);
+    listeners();
+  });
+};
+
+const modalBtnListener = () => {
+  const modaladdbtn = $('#modal-addbtn');
+
+  modaladdbtn.on('click', () => {
+    const productName = $('#product-name').val();
+
+    if (productName.length >= 2) {
+      console.log('Product Name is >= 2 letters');
+    } else {
+      console.log('Product Name is Not 2 Letters');
+    }
+  });
 };
 
 handleRenderProductsInShoppingList(currentId);
+modalBtnListener();

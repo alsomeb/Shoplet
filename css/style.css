@@ -26,6 +26,18 @@ body {
   flex-flow: column wrap;
 }
 
+.buttons a {
+  background-color: #e8693346;
+}
+
+.buttons button {
+  background-color: #e8693346;
+}
+
+.back-btn {
+  margin-right: 3%;
+}
+
 .listan {
   width: 100%;
 }
@@ -40,7 +52,7 @@ body {
 
 .jumbo-head img {
   width: auto;
-  height: 90px;
+  height: 40px;
 }
 
 .listan li {
@@ -55,7 +67,7 @@ body {
 }
 
 .jumbo-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -89,6 +101,6 @@ body {
 
   .jumbo-head img {
     width: auto;
-    height: 50px;
+    height: 40px;
   }
 }
