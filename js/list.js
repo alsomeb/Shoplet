@@ -110,8 +110,8 @@ const handleResetModal = () => {
 // Bundles ProductObject For POSTING the API
 const handlePostNewProduct = () => {
   const product = {
-    name: productName.val(),
-    amount: amount.val(),
+    name: productName.val().trim(),
+    amount: amount.val().trim(),
   };
   addNewProductPOST(product).then(() => {
     handleResetModal();
