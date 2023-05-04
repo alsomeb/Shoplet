@@ -28,10 +28,6 @@ const listeners = () => {
     $('.check-btn').on('click', function () {
       alert('Marks done'); // Todo
     });
-
-    $('.add-product').on('click', function () {
-      alert('Add goes here'); // Todo
-    });
   });
 };
 
