@@ -138,8 +138,8 @@ const modalBtnListener = () => {
   const modaladdbtn = $('#modal-addbtn');
 
   modaladdbtn.on('click', () => {
-    const productNameValue = productName.val();
-    const amountValue = amount.val();
+    const productNameValue = productName.val().trim();
+    const amountValue = amount.val().trim();
 
     const isValidProductName = productNameValue.length >= 2 ? true : false;
     const isValidAmount = amountValue >= 1 ? true : false;
