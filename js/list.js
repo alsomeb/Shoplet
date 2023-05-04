@@ -23,12 +23,21 @@ const titleElement = $('#exampleModalLabel');
 const productName = $('#product-name');
 const amount = $('#amount');
 
+const checkBtn = $('.check-btn');
+
 const listeners = () => {
   $(document).ready(function () {
     $('.check-btn').on('click', function () {
-      alert('Marks done'); // Todo
+      const id = this.id;
+      handleMarkItemDone(id);
     });
   });
+};
+
+const handleMarkItemDone = (id) => {
+  const itemId = `#product-${id}`;
+  const element = $(itemId);
+  $(element).toggleClass('line');
 };
 
 const handleRenderProductsInShoppingList = (currentId) => {
@@ -37,14 +46,15 @@ const handleRenderProductsInShoppingList = (currentId) => {
       if (data.length > 0) {
         data.forEach((product) => {
           unorderedListItemElement.append(`
-          <li>
+          <li id="product-${product.id}">
             ${product.amount}x ${product.name}
-            <button class="btn check-btn">
+            <button class="btn check-btn" id="${product.id}">
               <i class="fa-solid fa-check"></i>
             </button>
           </li>`);
         });
         handleRenderShoppingListInfo(currentId);
+        listeners();
       } else {
         // If There are no products in this list created yet
         handleRenderShoppingListInfo(currentId);
@@ -75,7 +85,6 @@ const handleRenderShoppingListInfo = (currentId) => {
         Add Product
     </button>
     `);
-    listeners();
   });
 };
 

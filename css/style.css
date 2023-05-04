@@ -46,6 +46,10 @@ body {
   width: 100%;
 }
 
+.line {
+  text-decoration: line-through;
+}
+
 .jumbo-head {
   display: flex;
   justify-content: center;
@@ -67,7 +71,7 @@ body {
 
 .listan i {
   font-size: 1.2rem;
-  color: #b8621b;
+  color: #01ad30;
 }
 
 .jumbo-title {
