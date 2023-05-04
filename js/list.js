@@ -93,6 +93,8 @@ const handleValidateFields = (arrayOfBools) => {
 const handleErrorAnimation = () => {
   titleElement.text('Check Fields');
   titleElement.css('color', 'red');
+  productName.css('border-color', 'red');
+  amount.css('border-color', 'red');
   titleElement.slideUp().slideDown();
 };
 
@@ -100,6 +102,8 @@ const handleErrorAnimation = () => {
 const handleResetModal = () => {
   titleElement.text('New Product');
   titleElement.css('color', 'black');
+  productName.css('border-color', '#ced4da');
+  amount.css('border-color', '#ced4da');
   productName.val('');
   amount.val('');
 
@@ -115,6 +119,7 @@ const handlePostNewProduct = () => {
   };
   addNewProductPOST(product).then(() => {
     handleResetModal();
+    refresh();
   });
 };
 
@@ -127,6 +132,11 @@ const handleErrorMessage = (formIsValid) => {
   }
 };
 
+// Triggers Reload
+const refresh = () => {
+  window.location.reload();
+};
+
 // Listener Modal Button
 const modalBtnListener = () => {
   const modaladdbtn = $('#modal-addbtn');
@@ -136,7 +146,7 @@ const modalBtnListener = () => {
     const amountValue = amount.val();
 
     const isValidProductName = productNameValue.length >= 2 ? true : false;
-    const isValidAmount = amountValue >= 2 ? true : false;
+    const isValidAmount = amountValue >= 1 ? true : false;
 
     let formIsValid = handleValidateFields([isValidProductName, isValidAmount]);
 
