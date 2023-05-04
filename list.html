@@ -59,16 +59,20 @@
       </div>
     </div>
 
-    <!-- Stuff for ADD -->
+    <!-- Added By jQuery -->
+    <!--
     <button
       type="button"
       class="btn btn-primary"
       data-bs-toggle="modal"
       data-bs-target="#exampleModal"
+      id="modalBtn"
     >
       Add Product
     </button>
+  -->
 
+    <!-- MODAL -->
     <div
       class="modal fade"
       id="exampleModal"
@@ -99,6 +103,7 @@
                   id="product-name"
                   autocomplete="off"
                   name="product"
+                  placeholder="Enter Product Name"
                 />
               </div>
               <div class="mb-3">
@@ -110,6 +115,8 @@
                   name="amount"
                   value="1"
                   autocomplete="off"
+                  placeholder="Enter Amount"
+                  min="1"
                 />
               </div>
             </form>
@@ -117,12 +124,16 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-outline-dark modal-buttons"
               data-bs-dismiss="modal"
             >
               Close
             </button>
-            <button id="modal-addbtn" type="button" class="btn btn-primary">
+            <button
+              id="modal-addbtn"
+              type="button"
+              class="btn btn-outline-dark modal-buttons"
+            >
               Add Product
             </button>
           </div>

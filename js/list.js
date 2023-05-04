@@ -3,6 +3,7 @@ import {
   getProductsByShoppingListId,
   getCurrentSavedShoppingListId,
   getShoppingListById,
+  addNewProductPOST,
 } from './api.js';
 
 const currentId = getCurrentSavedShoppingListId();
@@ -16,6 +17,11 @@ const buttonsDivElement = $('.buttons');
 const jumbotronElement = $('.jumbotron');
 
 const jumboTitleElement = $('.jumbo-title');
+
+const titleElement = $('#exampleModalLabel');
+
+const productName = $('#product-name');
+const amount = $('#amount');
 
 const listeners = () => {
   $(document).ready(function () {
@@ -59,26 +65,82 @@ const handleRenderProductsInShoppingList = (currentId) => {
 };
 
 const handleRenderShoppingListInfo = (currentId) => {
+  // Fetch ShoppingListById from API
   getShoppingListById(currentId).then((data) => {
     jumboTitleElement.text(data.added);
     productsHeaderElement.text(data.description);
     buttonsDivElement.append(`
-    <button class="btn btn-outline-dark add-product">Add Product</button>`);
+    <button
+    type="button"
+    class="btn btn-outline-dark"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    id="modalBtn">
+        Add Product
+    </button>
+    `);
     listeners();
   });
 };
 
+// Checks if all bools in array are true
+const handleValidateFields = (arrayOfBools) => {
+  let fieldsAreValid = arrayOfBools.every((item) => item === true);
+  return fieldsAreValid;
+};
+
+// Animation + Text Style For Error in Modal Title
+const handleErrorAnimation = () => {
+  titleElement.text('Check Fields');
+  titleElement.css('color', 'red');
+  titleElement.slideUp().slideDown();
+};
+
+// Resets Modal Title + fields If
+const handleResetModal = () => {
+  titleElement.text('New Product');
+  titleElement.css('color', 'black');
+  productName.val('');
+  amount.val('');
+
+  // Trigger a click to get rid of modal
+  $('.btn-close').trigger('click');
+};
+
+// Bundles ProductObject For POSTING the API
+const handlePostNewProduct = () => {
+  const product = {
+    name: productName.val(),
+    amount: amount.val(),
+  };
+  addNewProductPOST(product).then(() => {
+    handleResetModal();
+  });
+};
+
+// Handles Error msg if there are any else POST new Product To API
+const handleErrorMessage = (formIsValid) => {
+  if (formIsValid) {
+    handlePostNewProduct();
+  } else {
+    handleErrorAnimation();
+  }
+};
+
+// Listener Modal Button
 const modalBtnListener = () => {
   const modaladdbtn = $('#modal-addbtn');
 
   modaladdbtn.on('click', () => {
-    const productName = $('#product-name').val();
+    const productNameValue = productName.val();
+    const amountValue = amount.val();
 
-    if (productName.length >= 2) {
-      console.log('Product Name is >= 2 letters');
-    } else {
-      console.log('Product Name is Not 2 Letters');
-    }
+    const isValidProductName = productNameValue.length >= 2 ? true : false;
+    const isValidAmount = amountValue >= 2 ? true : false;
+
+    let formIsValid = handleValidateFields([isValidProductName, isValidAmount]);
+
+    handleErrorMessage(formIsValid);
   });
 };
 
