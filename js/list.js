@@ -150,6 +150,7 @@ const modalBtnListener = () => {
     const productNameValue = productName.val().trim();
     const amountValue = amount.val().trim();
 
+    // Field Validation Bools
     const isValidProductName = productNameValue.length >= 2 ? true : false;
     const isValidAmount = amountValue >= 1 ? true : false;
 
