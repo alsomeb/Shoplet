@@ -72,3 +72,27 @@ export async function addNewProductPOST(productObject) {
     console.log(err);
   }
 }
+
+// DELETE
+export async function deleteShoppingListById(id) {
+  const API_URL_DELETE = `http://localhost:8080/api/v1/shoppinglists/${id}`;
+
+  const request = new Request(API_URL_DELETE, {
+    method: 'DELETE',
+  });
+
+  try {
+    const response = await fetch(request);
+    const data = await response.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// Helper functions
+
+// Triggers Reload not really the best but will do the job here
+export const refresh = () => {
+  window.location.reload();
+};

@@ -4,6 +4,7 @@ import {
   getCurrentSavedShoppingListId,
   getShoppingListById,
   addNewProductPOST,
+  refresh,
 } from './api.js';
 
 const currentId = getCurrentSavedShoppingListId();
@@ -146,11 +147,6 @@ const handleErrorMessage = (formIsValid) => {
   } else {
     handleErrorAnimation();
   }
-};
-
-// Triggers Reload
-const refresh = () => {
-  window.location.reload();
 };
 
 // handle save products cart to LocalStorage
