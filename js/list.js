@@ -25,11 +25,9 @@ const productName = $('#product-name');
 const amount = $('#amount');
 
 const listeners = () => {
-  $(document).ready(function () {
-    $('.check-btn').on('click', function () {
-      const productId = this.id;
-      handleMarkItemDone(productId);
-    });
+  $('.check-btn').on('click', function () {
+    const productId = this.id;
+    handleMarkItemDone(productId);
   });
 };
 
@@ -125,8 +123,8 @@ const handleResetModal = () => {
   productName.val('');
   amount.val('');
 
-  // Trigger a click to get rid of modal
-  $('.btn-close').trigger('click');
+  // Close Modal
+  $('#exampleModal').modal('hide');
 };
 
 // Bundles ProductObject For POSTING the API
