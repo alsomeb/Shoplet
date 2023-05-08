@@ -29,7 +29,7 @@ const handleRenderCards = () => {
       if (data.length > 0) {
         data.forEach((list) => {
           shoppingListsElement.append(`
-                  <div class="shoppinglist-column col-lg-4 col-md-6" id="card-${list.id}">
+                  <div class="shoppinglist-column col-lg-4 col-md-6 my-3" id="card-${list.id}">
                   <div class="card shadow">
                     <div class="card-header fw-bold text-center">${list.added}</div>
                     <div class="card-body text-center">
