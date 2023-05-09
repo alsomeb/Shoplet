@@ -43,6 +43,78 @@
       <div class="index-header">
         <h1 class="index-header-text">Let's get shopping</h1>
       </div>
+
+      <!-- MODAL -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                New Shopping List
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="product-name" class="col-form-label"
+                    >List Name:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="list-name"
+                    autocomplete="off"
+                    name="list"
+                    placeholder="Enter List Name"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="date" class="col-form-label">Date:</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="date"
+                    name="date"
+                    placeholder="Enter Date"
+                  />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-dark modal-buttons"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                id="modal-addbtn"
+                type="button"
+                class="btn btn-outline-dark modal-buttons"
+              >
+                Add List
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="add-list" class="btn btn-outline-dark modal-buttons mt-5">
+        Create new List
+      </button>
       <div class="row mt-4" id="shopping_lists"></div>
     </section>
 
