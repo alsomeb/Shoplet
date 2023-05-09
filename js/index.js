@@ -1,5 +1,10 @@
 'use strict';
-import { getAllShoppingLists, deleteShoppingListById, refresh } from './api.js';
+import {
+  getAllShoppingLists,
+  deleteShoppingListById,
+  refresh,
+  addNewShoppingListPUT,
+} from './api.js';
 
 // https://mehdiouss.medium.com/how-to-use-async-await-with-the-fetch-api-in-javascript-97cdcca7abbc
 // Since getAllShoppingLists() is an asynchronous function, it returns a promise. As a result, we used one 'then()' method to handle the promise.
@@ -29,8 +34,13 @@ const listeners = () => {
     const index = buttonElementId.lastIndexOf('-') + 1;
     const shoppingListId = buttonElementId.substring(index);
     deleteShoppingListById(shoppingListId);
+    deleteLocalStorageCartById(buttonElementId);
     refresh();
   });
+};
+
+const deleteLocalStorageCartById = (cartId) => {
+  localStorage.removeItem(cartId);
 };
 
 const handleRenderCards = () => {
@@ -51,7 +61,7 @@ const handleRenderCards = () => {
                           <a id="${list.id}" class="btn btn-outline-dark shopping" href="/list.html"
                             >Start shopping</a
                           >
-                          <button class="btn btn-outline-danger delete" id="list-${list.id}">Delete</button>
+                          <button class="btn btn-outline-danger delete" id="cart-${list.id}">Delete</button>
                         </div>
                       </div>
                     </div>
@@ -68,7 +78,6 @@ const handleRenderCards = () => {
         <div class="img-fluid">
           <img class="w-25" src="img/grocery-cart.png" alt="grocery-cart" />
         </div>
-          <button class="btn btn-outline-dark mt-5">Add Shopping List</button>
         </div>
         `);
       }
@@ -110,11 +119,27 @@ const handleResetModal = () => {
   $('#exampleModal').modal('hide');
 };
 
-// Handles Error msg if there are any else POST new Product To API
+// Bundles ShoppingList For creating with PUT in the API
+const handleAddNewShoppingList = () => {
+  const addedDate = new Date(inputElementDate.val()).toLocaleDateString();
+
+  const shoppingList = {
+    description: inputElementShoppingList.val().trim(),
+    added: addedDate,
+  };
+
+  addNewShoppingListPUT(shoppingList).then(() => {
+    handleResetModal();
+    refresh();
+  });
+};
+
+// Handles Error msg if there are any else Create new Shopping List
 const handleErrorMessage = (formIsValid) => {
   if (formIsValid) {
     console.log('FORM IS VALID');
-    handleResetModal();
+    handleAddNewShoppingList();
+    //handleResetModal();
   } else {
     handleErrorAnimation();
   }

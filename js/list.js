@@ -136,6 +136,7 @@ const handlePostNewProduct = () => {
   };
   addNewProductPOST(product).then(() => {
     handleResetModal();
+    localStorage.removeItem(cartId); // den kommer ändå refreshas när vi rerender sidan, detta löste id conflict i localstorage
     refresh();
   });
 };

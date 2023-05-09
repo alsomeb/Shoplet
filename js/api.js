@@ -73,6 +73,29 @@ export async function addNewProductPOST(productObject) {
   }
 }
 
+// POST
+export async function addNewShoppingListPUT(shoppingListObject) {
+  const shoppingListId = 0; // ID spelar ingen roll vid nyskapande sätter 0
+  const API_URL_POST = `http://localhost:8080/api/v1/shoppinglists/${shoppingListId}`;
+
+  const request = new Request(API_URL_POST, {
+    method: 'PUT',
+    body: JSON.stringify(shoppingListObject),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  try {
+    const response = await fetch(request);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 // DELETE
 export async function deleteShoppingListById(id) {
   const API_URL_DELETE = `http://localhost:8080/api/v1/shoppinglists/${id}`;
