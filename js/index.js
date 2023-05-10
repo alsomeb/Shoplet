@@ -91,6 +91,7 @@ const handleRenderCards = () => {
         <img src="img/error.png" alt="error-icon" />
       </div>
       `);
+      addListButton.remove();
     }
   });
 };
@@ -158,6 +159,9 @@ const handleErrorAnimation = () => {
 const modalAddNewShoppingList = () => {
   const modaladdbtn = $('#modal-addbtn');
 
+  // set current date for Date Input since It cant be in the past
+  document.getElementById('date').valueAsDate = new Date();
+
   modaladdbtn.on('click', () => {
     const shoppingListNameValue = inputElementShoppingList.val().trim();
     const date = inputElementDate.val();
@@ -177,6 +181,16 @@ const modalAddNewShoppingList = () => {
   });
 };
 
+// Tar bort att man kan klicka enter för att tabba ner modal
+const handleRemoveEnterKeyListener = () => {
+  $(window).keydown(function (event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+    }
+  });
+};
+
 handleRenderCards();
 modalAddNewShoppingList();
 modalListenr();
+handleRemoveEnterKeyListener();
