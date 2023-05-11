@@ -1,5 +1,5 @@
 const API_URL_FETCH_DATE_ASC =
-  'http://localhost:8080/api/v1/shoppinglists/sort?order=asc';
+  'https://stingray-app-hz5s8.ondigitalocean.app/api/v1/shoppinglists/sort?order=asc';
 
 // Get All Shopping Lists
 export async function getAllShoppingLists() {
@@ -16,7 +16,7 @@ export async function getAllShoppingLists() {
 
 // GET Products in ShoppingList By ListID
 export async function getProductsByShoppingListId(listId) {
-  const API_URL_BY_ID = `http://localhost:8080/api/v1/shoppinglists/${listId}/products`;
+  const API_URL_BY_ID = `https://stingray-app-hz5s8.ondigitalocean.app/api/v1/shoppinglists/${listId}/products`;
 
   try {
     const response = await fetch(API_URL_BY_ID);
@@ -31,7 +31,7 @@ export async function getProductsByShoppingListId(listId) {
 
 // GET List By ShoppingList ID
 export async function getShoppingListById(listId) {
-  const API_URL_BY_ID = `http://localhost:8080/api/v1/shoppinglists/${listId}`;
+  const API_URL_BY_ID = `https://stingray-app-hz5s8.ondigitalocean.app/api/v1/shoppinglists/${listId}`;
 
   try {
     const response = await fetch(API_URL_BY_ID);
@@ -53,7 +53,7 @@ export function getCurrentSavedShoppingListId() {
 // POST
 export async function addNewProductPOST(productObject) {
   const shoppingListId = getCurrentSavedShoppingListId();
-  const API_URL_POST = `http://localhost:8080/api/v1/shoppinglists/${shoppingListId}/products`;
+  const API_URL_POST = `https://stingray-app-hz5s8.ondigitalocean.app/api/v1/shoppinglists/${shoppingListId}/products`;
 
   const request = new Request(API_URL_POST, {
     method: 'POST',
@@ -76,7 +76,7 @@ export async function addNewProductPOST(productObject) {
 // POST
 export async function addNewShoppingListPUT(shoppingListObject) {
   const shoppingListId = 0; // ID spelar ingen roll vid nyskapande sätter 0
-  const API_URL_POST = `http://localhost:8080/api/v1/shoppinglists/${shoppingListId}`;
+  const API_URL_POST = `https://stingray-app-hz5s8.ondigitalocean.app/api/v1/shoppinglists/${shoppingListId}`;
 
   const request = new Request(API_URL_POST, {
     method: 'PUT',
@@ -98,7 +98,7 @@ export async function addNewShoppingListPUT(shoppingListObject) {
 
 // DELETE
 export async function deleteShoppingListById(id) {
-  const API_URL_DELETE = `http://localhost:8080/api/v1/shoppinglists/${id}`;
+  const API_URL_DELETE = `https://stingray-app-hz5s8.ondigitalocean.app/api/v1/shoppinglists/${id}`;
 
   const request = new Request(API_URL_DELETE, {
     method: 'DELETE',

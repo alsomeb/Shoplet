@@ -33,9 +33,10 @@ const listeners = () => {
     const buttonElementId = this.id;
     const index = buttonElementId.lastIndexOf('-') + 1;
     const shoppingListId = buttonElementId.substring(index);
-    deleteShoppingListById(shoppingListId);
-    deleteLocalStorageCartById(buttonElementId);
-    refresh();
+    deleteShoppingListById(shoppingListId).then(() => {
+      deleteLocalStorageCartById(buttonElementId);
+      refresh();
+    });
   });
 };
 
