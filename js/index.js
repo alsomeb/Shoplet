@@ -191,7 +191,13 @@ const handleRemoveEnterKeyListener = () => {
   });
 };
 
+// clear LS
+const handleClearStorage = () => {
+  localStorage.clear();
+};
+
 handleRenderCards();
 modalAddNewShoppingList();
 modalListenr();
 handleRemoveEnterKeyListener();
+handleClearStorage();
