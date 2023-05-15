@@ -4,7 +4,9 @@ const test_URL = 'http://localhost:8080/api/v1/shoppinglists/sort?order=asc';
 // Get All Shopping Lists
 export async function getAllShoppingLists() {
   try {
-    const response = await fetch(test_URL);
+    const response = await fetch(
+      ROOT_URL + 'api/v1/shoppinglists/sort?order=asc'
+    );
 
     const data = await response.json();
     console.log('All lists:');
