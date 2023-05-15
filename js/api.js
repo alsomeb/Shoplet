@@ -1,15 +1,10 @@
-const ROOT_URL = 'https://seahorse-app-pjmit.ondigitalocean.app/';
+const ROOT_URL = 'https://king-prawn-app-twz8n.ondigitalocean.app/';
 const test_URL = 'http://localhost:8080/api/v1/shoppinglists/sort?order=asc';
 
 // Get All Shopping Lists
 export async function getAllShoppingLists() {
   try {
-    const response = await fetch(test_URL, {
-      credentials: 'include',
-      headers: {
-        Authorization: 'Basic YWRtaW46UGlhZjRAQGFh',
-      },
-    });
+    const response = await fetch(test_URL);
 
     const data = await response.json();
     console.log('All lists:');
@@ -25,7 +20,7 @@ export async function getProductsByShoppingListId(listId) {
   const API_URL_BY_ID = ROOT_URL + `api/v1/shoppinglists/${listId}/products`;
 
   try {
-    const response = await fetch(API_URL_BY_ID, { headers: auth });
+    const response = await fetch(API_URL_BY_ID);
     const data = await response.json();
     console.log(`Products:`);
     console.log(data);
@@ -40,7 +35,7 @@ export async function getShoppingListById(listId) {
   const API_URL_BY_ID = ROOT_URL + `api/v1/shoppinglists/${listId}`;
 
   try {
-    const response = await fetch(API_URL_BY_ID, { headers: auth });
+    const response = await fetch(API_URL_BY_ID);
     const data = await response.json();
     console.log(`ShoppingList Data:`);
     console.log(data);
@@ -65,10 +60,6 @@ export async function addNewProductPOST(productObject) {
   const request = new Request(API_URL_POST, {
     method: 'POST',
     body: JSON.stringify(productObject),
-    headers: {
-      'Content-Type': 'application/json',
-      auth,
-    },
   });
 
   try {
@@ -89,10 +80,6 @@ export async function addNewShoppingListPUT(shoppingListObject) {
   const request = new Request(API_URL_POST, {
     method: 'PUT',
     body: JSON.stringify(shoppingListObject),
-    headers: {
-      'Content-Type': 'application/json',
-      auth,
-    },
   });
 
   try {
@@ -111,7 +98,6 @@ export async function deleteShoppingListById(id) {
 
   const request = new Request(API_URL_DELETE, {
     method: 'DELETE',
-    auth,
   });
 
   try {
