@@ -217,9 +217,5 @@ const modalBtnListener = () => {
   });
 };
 
-// TODO OM JAG VILL
-// "Finish" Button MED LISTENER --> TAR BORT LocalStorage nyckel (cartId) när man är klar med shoppingen, API --> deleteShoppingListById() --> redirectar till ../index.html
-// SAMT FINNS DELETE KNAPP PÅ index.js
-
 handleRenderProductsInShoppingList(currentId);
 modalBtnListener();

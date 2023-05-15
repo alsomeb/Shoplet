@@ -1,11 +1,16 @@
 const ROOT_URL = 'https://seahorse-app-pjmit.ondigitalocean.app/';
 
+const test_creds = btoa('admin:Piaf4@@aa');
+const auth = { Authorization: `Basic ${test_creds}` };
+
 // Get All Shopping Lists
 export async function getAllShoppingLists() {
   try {
     const response = await fetch(
-      ROOT_URL + 'api/v1/shoppinglists/sort?order=asc'
+      ROOT_URL + 'api/v1/shoppinglists/sort?order=asc',
+      { headers: auth }
     );
+
     const data = await response.json();
     console.log(`All lists:`);
     console.log(data);
@@ -20,7 +25,7 @@ export async function getProductsByShoppingListId(listId) {
   const API_URL_BY_ID = ROOT_URL + `api/v1/shoppinglists/${listId}/products`;
 
   try {
-    const response = await fetch(API_URL_BY_ID);
+    const response = await fetch(API_URL_BY_ID, { headers: auth });
     const data = await response.json();
     console.log(`Products:`);
     console.log(data);
@@ -35,7 +40,7 @@ export async function getShoppingListById(listId) {
   const API_URL_BY_ID = ROOT_URL + `api/v1/shoppinglists/${listId}`;
 
   try {
-    const response = await fetch(API_URL_BY_ID);
+    const response = await fetch(API_URL_BY_ID, { headers: auth });
     const data = await response.json();
     console.log(`ShoppingList Data:`);
     console.log(data);
@@ -62,6 +67,7 @@ export async function addNewProductPOST(productObject) {
     body: JSON.stringify(productObject),
     headers: {
       'Content-Type': 'application/json',
+      auth,
     },
   });
 
@@ -85,6 +91,7 @@ export async function addNewShoppingListPUT(shoppingListObject) {
     body: JSON.stringify(shoppingListObject),
     headers: {
       'Content-Type': 'application/json',
+      auth,
     },
   });
 
@@ -104,6 +111,7 @@ export async function deleteShoppingListById(id) {
 
   const request = new Request(API_URL_DELETE, {
     method: 'DELETE',
+    auth,
   });
 
   try {
