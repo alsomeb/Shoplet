@@ -4,6 +4,7 @@
     <li>Prepare shopping lists at home and check off groceries while shopping</li>
     <li>Easy shopping list UI making it easy to add/remove groceries while shopping</li>
     <li>Works aswell as an Progressive Web App, save as shortcut on your phone and it will behave as a native mobile app</li>
+    <li>Deployed version not live anymore</li>
 </ul>
 
 <hr>
