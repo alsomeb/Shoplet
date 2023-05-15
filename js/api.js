@@ -1,18 +1,18 @@
 const ROOT_URL = 'https://seahorse-app-pjmit.ondigitalocean.app/';
-
-const test_creds = btoa('admin:Piaf4@@aa');
-const auth = { Authorization: `Basic ${test_creds}` };
+const test_URL = 'http://localhost:8080/api/v1/shoppinglists/sort?order=asc';
 
 // Get All Shopping Lists
 export async function getAllShoppingLists() {
   try {
-    const response = await fetch(
-      ROOT_URL + 'api/v1/shoppinglists/sort?order=asc',
-      { headers: auth }
-    );
+    const response = await fetch(test_URL, {
+      credentials: 'include',
+      headers: {
+        Authorization: 'Basic YWRtaW46UGlhZjRAQGFh',
+      },
+    });
 
     const data = await response.json();
-    console.log(`All lists:`);
+    console.log('All lists:');
     console.log(data);
     return data;
   } catch (err) {
